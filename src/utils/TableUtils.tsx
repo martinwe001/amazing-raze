@@ -1,6 +1,6 @@
 import { Column } from "react-table";
-import { BredvidTableData } from "./CsvHelper";
 import { Challenge } from "./AmazingRazeHelper";
+import { BredvidTableData } from "./CsvHelper";
 
 export interface Player {
   id: string;
@@ -40,7 +40,7 @@ export const COLUMNS: Column<LeaderboardItem>[] = [
     Cell: (row) => row.value,
   },
   {
-    Header: "Antall utfordringer",
+    Header: "✅",
     accessor: "numChallenges",
     Cell: (row) => row.value,
   },

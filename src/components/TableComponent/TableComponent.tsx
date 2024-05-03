@@ -34,8 +34,11 @@ function TableComponent() {
       const tableData = teams.map((team) => {
         const pointsAndnum = challenges
           .map((challenge) => {
-            if (team.completedChallenges.includes(challenge.id)) {
-              return challenge.points;
+            const numberOfCompletions = team.completedChallenges.filter(
+              (c) => c === challenge.id
+            );
+            if (numberOfCompletions.length) {
+              return challenge.points * numberOfCompletions.length;
             }
           })
           .reduce(

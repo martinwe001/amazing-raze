@@ -1,10 +1,11 @@
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
+import InfoComponent from "./InfoComponent/InfoComponent";
+import AdminFormComponent from "./components/AdminFormComponent/AdminFormComponent";
+import FormComponent from "./components/FormComponent/FormComponent";
 import NavbarComponent from "./components/NavbarComponent/NavbarComponent";
 import TableComponent from "./components/TableComponent/TableComponent";
-import FormComponent from "./components/FormComponent/FormComponent";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import InfoComponent from "./InfoComponent/InfoComponent";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<FormComponent />} />
             <Route path="/leaderboard" element={<TableComponent />} />
             <Route path="/info" element={<InfoComponent />} />
+            <Route path="/madsernub" element={<AdminFormComponent />} />
             <Route path="*" element={<div>Page not found!</div>} />
           </Routes>
         </div>
