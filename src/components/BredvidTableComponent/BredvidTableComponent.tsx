@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import { useTable } from "react-table";
 import { BredvidTableData, getBredvidData } from "../../utils/CsvHelper";
 import { BREDVIDCOLUMNS } from "../../utils/TableUtils";
-import { useTable } from "react-table";
 
 function BredvidTableComponent() {
   const [data, setData] = useState<BredvidTableData[]>([]);
@@ -17,7 +17,7 @@ function BredvidTableComponent() {
 
   return (
     <>
-      <h1 className="tableHeader">&#127866; Leaderboard &#127866;</h1>
+      <h1 className="tableHeader">🇦🇹 Leaderboard 🇦🇹</h1>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
