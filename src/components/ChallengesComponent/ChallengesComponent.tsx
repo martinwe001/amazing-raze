@@ -71,7 +71,7 @@ function ChallengesComponent() {
                             className={
                               completedChallenges.includes(`${i}`) &&
                               !data[i].isMultipleTries
-                                ? "iscompleted"
+                                ? "isCompleted"
                                 : ""
                             }
                             {...cell.getCellProps()}
@@ -83,7 +83,10 @@ function ChallengesComponent() {
                     </tr>
                     {expandedRows[row.id] && (
                       <tr>
-                        <td colSpan={row.cells.length}>
+                        <td
+                          colSpan={row.cells.length}
+                          className="descriptionBox"
+                        >
                           {data[i].description}
                           {data[i].hint && (
                             <>

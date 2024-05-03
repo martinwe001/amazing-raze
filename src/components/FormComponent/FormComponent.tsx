@@ -40,11 +40,21 @@ function FormComponent() {
     setFormState(2);
   }
 
+  const firstVerse =
+    "Gratulerer, folkens, dere er litt av et lag,\nforsett sånn, og dere får en sabla bra dag!";
+  const secondVerse =
+    "Gjør dere klare for å skue, spise litt, og vandre,\nmens dere prøver å samle poeng (gjerne flere enn de andre).";
+  const thirdVerse =
+    "Koden dere søker, er svaret på første gåte,\nmen husk å ikke glemme - ALLTID drikk med måte...";
+
   return (
     <div className="formWrapper">
       {formState === 1 && (
         <>
           <h1 className="formHeader">🇦🇹 Skriv inn kode 🇦🇹</h1>
+          <p className="infoText">{firstVerse}</p>
+          <p className="infoText">{secondVerse}</p>
+          <p className="infoText">{thirdVerse}</p>
           <form onSubmit={(e) => handleCodeSubmit(e)}>
             <div className="join-game-form">
               <CustomInput
