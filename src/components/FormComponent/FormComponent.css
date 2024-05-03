@@ -19,6 +19,11 @@
 .teamNameHeader {
   color: white;
 }
+.infoText {
+  color: white;
+  font-style: italic;
+  white-space: pre-line;
+}
 @media (max-width: 768px) {
   .formHeader {
     font-size: 1.5rem;
