@@ -32,15 +32,11 @@ function TableComponent() {
   useEffect(() => {
     if (teams && challenges) {
       const tableData = teams.map((team) => {
-        const pointsAndnum = challenges
-          .map((challenge) => {
-            const numberOfCompletions = team.completedChallenges.filter(
-              (c) => c === challenge.id
-            );
-            if (numberOfCompletions.length) {
-              return challenge.points * numberOfCompletions.length;
-            }
+        const pointsAndnum = team.completedChallenges
+          .map((c) => {
+            return challenges.find((c1) => c1.id === c)?.points;
           })
+          .filter((c2) => c2)
           .reduce(
             (acc, cur) => {
               if (cur) {
