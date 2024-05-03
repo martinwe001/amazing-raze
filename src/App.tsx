@@ -13,8 +13,8 @@ function App() {
         <NavbarComponent />
         <div className="mainWrapper">
           <Routes>
-            <Route path="/" element={<TableComponent />} />
-            <Route path="/viewchallenges" element={<FormComponent />} />
+            <Route path="/" element={<FormComponent />} />
+            <Route path="/leaderboard" element={<TableComponent />} />
             <Route path="/info" element={<InfoComponent />} />
             <Route path="*" element={<div>Page not found!</div>} />
           </Routes>

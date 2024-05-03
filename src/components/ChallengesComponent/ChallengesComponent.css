@@ -22,21 +22,21 @@ td {
   color: white;
 }
 .iscompleted {
-  color: red;
+  color: gray;
 }
 
 thead > tr {
-  background-color: #509274;
+  background-color: #1679ab;
 }
 tbody > tr {
-  background-color: #485965;
+  background-color: #3c5b6f;
 }
 
 tbody > tr:not(:last-child) {
   border-bottom: 1px solid white;
 }
 tbody > tr:last-child {
-  border-bottom: 2px solid #509274;
+  border-bottom: 2px solid #3c5b6f;
 }
 
 @media (max-width: 768px) {

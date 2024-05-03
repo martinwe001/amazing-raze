@@ -25,7 +25,7 @@ function NavbarComponent() {
         expanded={expanded}
       >
         <Container>
-          <Navbar.Brand className="brand" onClick={() => navigateTo("")}>
+          <Navbar.Brand className="brand" onClick={() => handleOnClick("")}>
             🇦🇹 Amazing Race
           </Navbar.Brand>
           <Navbar.Toggle
@@ -36,9 +36,12 @@ function NavbarComponent() {
             <Nav className="me-auto">
               <Nav.Link
                 className="link"
-                onClick={() => handleOnClick("viewchallenges")}
+                onClick={() => handleOnClick("leaderboard")}
               >
-                Se challenges
+                Leaderboard
+              </Nav.Link>
+              <Nav.Link className="link" onClick={() => handleOnClick("")}>
+                Challenges
               </Nav.Link>
               <Nav.Link className="link" onClick={() => handleOnClick("info")}>
                 Regler

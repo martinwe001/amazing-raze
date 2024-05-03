@@ -63,7 +63,7 @@ function FormComponent() {
 
       {formState === 2 && team && (
         <>
-          <h1>{team.name}</h1>
+          <h1 className="teamNameHeader">{team.name}</h1>
           <ChallengesComponent />
         </>
       )}

@@ -69,7 +69,8 @@ function ChallengesComponent() {
                         return (
                           <td
                             className={
-                              completedChallenges.includes(`${i}`)
+                              completedChallenges.includes(`${i}`) &&
+                              !data[i].isMultipleTries
                                 ? "iscompleted"
                                 : ""
                             }

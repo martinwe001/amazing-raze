@@ -81,11 +81,11 @@ export const CHALLENGESCOLUMNS: Column<Challenge>[] = [
   {
     Header: "Maks 1 gang?",
     accessor: "isMultipleTries",
-    Cell: (row) => (row.value ? "Ja" : "Nei"),
+    Cell: (row) => (row.value ? "Nei" : "Ja"),
   },
   {
     Header: "Koster spenn",
     accessor: "isFree",
-    Cell: (row) => (row.value ? "Ja" : "Nei"),
+    Cell: (row) => (row.value ? "Nei" : "Ja"),
   },
 ];
