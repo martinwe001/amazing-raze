@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Team, getTeamById } from "../../utils/AmazingRazeHelper";
+import { getCookie, setCookie } from "../../utils/CookieHelper";
 import CustomButton from "../CustomComponents/Button/Button";
 import ErrorMessageDiv from "../CustomComponents/ErrorMessageDiv/ErrorMessageDiv";
 import CustomInput from "../CustomComponents/Input/Input";
@@ -9,9 +10,21 @@ function FormComponent() {
   const [code, setCode] = useState<string>("");
   const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const [formState, setFormState] = useState<number>(1);
+  const [formState, setFormState] = useState<number>(0);
   const [team, setTeam] = useState<Team>();
   const codes = import.meta.env.VITE_CODES;
+
+  useEffect(() => {
+    const code = getCookie();
+    if (code) {
+      getTeamById(code).then((currentTeam: Team) => {
+        setTeam(currentTeam);
+        setFormState(2);
+      });
+    } else {
+      setFormState(1);
+    }
+  }, []);
 
   async function handleCodeSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -21,6 +34,7 @@ function FormComponent() {
       setShowErrorMessage(true);
       return;
     }
+    setCookie(code);
     setTeam(await getTeamById(code));
     setFormState(2);
   }
