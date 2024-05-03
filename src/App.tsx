@@ -4,6 +4,7 @@ import NavbarComponent from "./components/NavbarComponent/NavbarComponent";
 import TableComponent from "./components/TableComponent/TableComponent";
 import FormComponent from "./components/FormComponent/FormComponent";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import InfoComponent from "./InfoComponent/InfoComponent";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<TableComponent />} />
             <Route path="/viewchallenges" element={<FormComponent />} />
+            <Route path="/info" element={<InfoComponent />} />
             <Route path="*" element={<div>Page not found!</div>} />
           </Routes>
         </div>

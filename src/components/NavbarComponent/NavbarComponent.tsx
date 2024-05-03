@@ -40,6 +40,9 @@ function NavbarComponent() {
               >
                 Se challenges
               </Nav.Link>
+              <Nav.Link className="link" onClick={() => handleOnClick("info")}>
+                Regler
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

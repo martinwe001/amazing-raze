@@ -2,18 +2,27 @@ import { useEffect, useMemo, useState } from "react";
 import { useTable } from "react-table";
 import { CHALLENGESCOLUMNS } from "../../utils/TableUtils";
 import "./ChallengesComponent.css";
-import { Challenge } from "../../utils/AmazingRazeHelper";
+import { Challenge, getTeamById } from "../../utils/AmazingRazeHelper";
 import { getChallenges } from "../../utils/FirebaseHelper";
+import { getCookie } from "../../utils/CookieHelper";
 
 function ChallengesComponent() {
   const [data, setData] = useState<Challenge[]>([]);
   const [expandedRows, setExpandedRows] = useState<{ [key: string]: boolean }>(
     {}
   );
+  const [completedChallenges, setCompletedChallenges] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
     getChallenges().then((challenges) => {
       setData(challenges);
-      console.log(challenges);
+
+      const teamName = getCookie();
+
+      getTeamById(teamName!).then((team) => {
+        setCompletedChallenges(team.completedChallenges);
+        setIsLoading(false);
+      });
     });
   }, []);
 
@@ -30,51 +39,69 @@ function ChallengesComponent() {
 
   return (
     <>
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr className="tableHeader" {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
-            prepareRow(row);
-            return (
-              <>
+      {!isLoading && (
+        <>
+          <table {...getTableProps()}>
+            <thead>
+              {headerGroups.map((headerGroup) => (
                 <tr
-                  {...row.getRowProps()}
-                  onClick={() => handleRowClick(row.id)}
+                  className="tableHeader"
+                  {...headerGroup.getHeaderGroupProps()}
                 >
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
-                  })}
+                  {headerGroup.headers.map((column) => (
+                    <th {...column.getHeaderProps()}>
+                      {column.render("Header")}
+                    </th>
+                  ))}
                 </tr>
-                {expandedRows[row.id] && (
-                  <tr>
-                    <td colSpan={row.cells.length}>
-                      {data[i].description}
-                      {data[i].hint && (
-                        <>
-                          <br />
-                          <a href={data[i].hint} target="none">
-                            Hint
-                          </a>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                )}
-              </>
-            );
-          })}
-        </tbody>
-      </table>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {rows.map((row, i) => {
+                prepareRow(row);
+                return (
+                  <>
+                    <tr
+                      {...row.getRowProps()}
+                      onClick={() => handleRowClick(row.id)}
+                    >
+                      {row.cells.map((cell) => {
+                        return (
+                          <td
+                            className={
+                              completedChallenges.includes(`${i}`)
+                                ? "iscompleted"
+                                : ""
+                            }
+                            {...cell.getCellProps()}
+                          >
+                            {cell.render("Cell")}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                    {expandedRows[row.id] && (
+                      <tr>
+                        <td colSpan={row.cells.length}>
+                          {data[i].description}
+                          {data[i].hint && (
+                            <>
+                              <br />
+                              <a href={data[i].hint} target="none">
+                                Hjelp meg...
+                              </a>
+                            </>
+                          )}
+                        </td>
+                      </tr>
+                    )}
+                  </>
+                );
+              })}
+            </tbody>
+          </table>
+        </>
+      )}
     </>
   );
 }
