@@ -14,10 +14,9 @@ export interface Attempt {
 }
 
 export interface LeaderboardItem {
-  id: string;
   name: string;
-  birthday: string;
-  bestTime: number;
+  points: number;
+  numChallenges: number;
 }
 
 export const COLUMNS: Column<LeaderboardItem>[] = [
@@ -30,13 +29,18 @@ export const COLUMNS: Column<LeaderboardItem>[] = [
     ),
   },
   {
-    Header: "Navn",
+    Header: "Lagnavn",
     accessor: "name",
     Cell: (row) => row.value,
   },
   {
-    Header: "Tid",
-    accessor: "bestTime",
+    Header: "Poeng",
+    accessor: "points",
+    Cell: (row) => row.value,
+  },
+  {
+    Header: "Antall utfordringer",
+    accessor: "numChallenges",
     Cell: (row) => row.value,
   },
 ];
