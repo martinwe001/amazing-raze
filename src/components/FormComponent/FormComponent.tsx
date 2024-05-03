@@ -5,6 +5,7 @@ import CustomButton from "../CustomComponents/Button/Button";
 import ErrorMessageDiv from "../CustomComponents/ErrorMessageDiv/ErrorMessageDiv";
 import CustomInput from "../CustomComponents/Input/Input";
 import "./FormComponent.css";
+import ChallengesComponent from "../ChallengesComponent/ChallengesComponent";
 
 function FormComponent() {
   const [code, setCode] = useState<string>("");
@@ -41,9 +42,9 @@ function FormComponent() {
 
   return (
     <div className="formWrapper">
-      <h1 className="formHeader">&#127866; Skriv inn kode &#127866;</h1>
       {formState === 1 && (
         <>
+        <h1 className="formHeader">&#127866; Skriv inn kode &#127866;</h1>
           <form onSubmit={(e) => handleCodeSubmit(e)}>
             <div className="join-game-form">
               <CustomInput
@@ -63,6 +64,7 @@ function FormComponent() {
       {formState === 2 && team && (
         <>
           <h1>{team.name}</h1>
+          <ChallengesComponent />
         </>
       )}
     </div>

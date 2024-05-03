@@ -2,6 +2,7 @@ import { get, ref, set } from "firebase/database";
 import { db } from "../firebaseConfig";
 import { generateGUID, getCurrentDateAsString } from "./BdayChallengeHelper";
 import { Attempt, Player } from "./TableUtils";
+import { Challenge } from "./AmazingRazeHelper";
 
 export const addAttemptForNewPlayer = async (
   name: string,
@@ -36,6 +37,17 @@ export const getPlayers = async (
 
   if (sortItems) players = players.sort((a, b) => a.time - b.time);
   return players;
+};
+
+export const getChallenges = async (
+  sortItems: boolean = true
+): Promise<Challenge[]> => {
+  const dataRef = ref(db, "challenges");
+  const firebaseData = await get(dataRef);
+  let challenges: Challenge[] = Object.values(firebaseData.val());
+
+  if (sortItems) challenges = challenges.sort((a, b) => a.points - b.points);
+  return challenges;
 };
 
 export const getPlayerByName = async (playerName: string) => {
