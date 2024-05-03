@@ -44,7 +44,7 @@ function FormComponent() {
     <div className="formWrapper">
       {formState === 1 && (
         <>
-          <h1 className="formHeader">🇦🇹 Skriv inn kode 🇦🇹</h1>
+          <h1 className="formHeader">🇿🇦 Skriv inn kode 🇿🇦</h1>
           <form onSubmit={(e) => handleCodeSubmit(e)}>
             <div className="join-game-form">
               <CustomInput

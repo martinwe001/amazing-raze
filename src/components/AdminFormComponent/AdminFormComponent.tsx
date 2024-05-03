@@ -48,7 +48,7 @@ function AdminFormComponent() {
 
   return (
     <>
-      <h1 className="formHeader">🇦🇹 Skriv inn lagnavn og challenge id 🇦🇹</h1>
+      <h1 className="formHeader">🇿🇦 Skriv inn lagnavn og challenge id 🇿🇦</h1>
       <form onSubmit={(e) => handleCodeSubmit(e)}>
         <div className="join-game-form">
           <CustomInput

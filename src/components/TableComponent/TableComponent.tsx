@@ -71,7 +71,7 @@ function TableComponent() {
 
   return (
     <>
-      <h1 className="tableHeader">🇦🇹 Leaderboard 🇦🇹</h1>
+      <h1 className="tableHeader">🇿🇦 Leaderboard 🇿🇦</h1>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
