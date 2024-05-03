@@ -36,21 +36,9 @@ function NavbarComponent() {
             <Nav className="me-auto">
               <Nav.Link
                 className="link"
-                onClick={() => handleOnClick("addchallenge")}
+                onClick={() => handleOnClick("viewchallenges")}
               >
-                Legg til forsøk
-              </Nav.Link>
-              <Nav.Link
-                className="link"
-                onClick={() => handleOnClick("players")}
-              >
-                Spillere
-              </Nav.Link>
-              <Nav.Link
-                className="link"
-                onClick={() => handleOnClick("bredvid")}
-              >
-                Bredvid 12-kamp
+                Se challenges
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

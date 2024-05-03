@@ -8,14 +8,13 @@ import { getDatabase } from "firebase/database";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: "bdaychallenge-da960.firebaseapp.com",
-  databaseURL:
-    "https://bdaychallenge-da960-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "bdaychallenge-da960",
-  storageBucket: "bdaychallenge-da960.appspot.com",
-  messagingSenderId: "1005972264441",
-  appId: "1:1005972264441:web:642a9586fb4804802e9928",
-  measurementId: "G-815BW30PNV",
+  authDomain: "amazing-raze.firebaseapp.com",
+  databaseURL: "https://amazing-raze-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "amazing-raze",
+  storageBucket: "amazing-raze.appspot.com",
+  messagingSenderId: "138525351619",
+  appId: "1:138525351619:web:efc3c69f65aa09aca6cc76",
+  measurementId: "G-KT6MHN1Y7K"
 };
 
 // Initialize Firebase
