@@ -9,7 +9,7 @@ export interface Challenge {
   category: string;
   isMultipleTries: boolean;
   isFree: boolean;
-  hint: string;
+  hint: string | undefined;
 }
 
 export interface Team {

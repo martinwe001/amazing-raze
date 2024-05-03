@@ -1,5 +1,6 @@
 import { Column } from "react-table";
 import { BredvidTableData } from "./CsvHelper";
+import { Challenge } from "./AmazingRazeHelper";
 
 export interface Player {
   id: string;
@@ -63,5 +64,28 @@ export const BREDVIDCOLUMNS: Column<BredvidTableData>[] = [
     Header: "Poeng",
     accessor: "totalPoints",
     Cell: (row) => row.value,
+  },
+];
+
+export const CHALLENGESCOLUMNS: Column<Challenge>[] = [
+  {
+    Header: "Navn",
+    accessor: "name",
+    Cell: (row) => row.value,
+  },
+  {
+    Header: "Poeng",
+    accessor: "points",
+    Cell: (row) => row.value,
+  },
+  {
+    Header: "Maks 1 gang?",
+    accessor: "isMultipleTries",
+    Cell: (row) => (row.value ? "Ja" : "Nei"),
+  },
+  {
+    Header: "Koster spenn",
+    accessor: "isFree",
+    Cell: (row) => (row.value ? "Ja" : "Nei"),
   },
 ];
