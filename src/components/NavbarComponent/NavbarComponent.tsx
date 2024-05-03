@@ -26,7 +26,7 @@ function NavbarComponent() {
       >
         <Container>
           <Navbar.Brand className="brand" onClick={() => handleOnClick("")}>
-            ��🇦 Amazing Race
+            🇿🇦 Amazing Race
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
