@@ -13,7 +13,6 @@ export interface Challenge {
 }
 
 export interface Team {
-  id: string;
   name: string;
   completedChallenges: string[];
   players: string[];
@@ -21,6 +20,16 @@ export interface Team {
 
 export const getTeamById = async (id: string): Promise<Team> => {
   const dataRef = ref(db, `teams/${id}`);
+  const firebaseData = await get(dataRef);
+  return firebaseData.val();
+};
+export const getTeams = async (): Promise<Team[]> => {
+  const dataRef = ref(db, `teams`);
+  const firebaseData = await get(dataRef);
+  return firebaseData.val();
+};
+export const getChallenges = async (): Promise<Challenge[]> => {
+  const dataRef = ref(db, `challenges`);
   const firebaseData = await get(dataRef);
   return firebaseData.val();
 };

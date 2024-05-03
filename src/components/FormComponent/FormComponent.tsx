@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Team, getTeamById } from "../../utils/AmazingRazeHelper";
 import { getCookie, setCookie } from "../../utils/CookieHelper";
+import ChallengesComponent from "../ChallengesComponent/ChallengesComponent";
 import CustomButton from "../CustomComponents/Button/Button";
 import ErrorMessageDiv from "../CustomComponents/ErrorMessageDiv/ErrorMessageDiv";
 import CustomInput from "../CustomComponents/Input/Input";
 import "./FormComponent.css";
-import ChallengesComponent from "../ChallengesComponent/ChallengesComponent";
 
 function FormComponent() {
   const [code, setCode] = useState<string>("");
@@ -44,7 +44,7 @@ function FormComponent() {
     <div className="formWrapper">
       {formState === 1 && (
         <>
-        <h1 className="formHeader">&#127866; Skriv inn kode &#127866;</h1>
+          <h1 className="formHeader">🇦🇹 Skriv inn kode 🇦🇹</h1>
           <form onSubmit={(e) => handleCodeSubmit(e)}>
             <div className="join-game-form">
               <CustomInput

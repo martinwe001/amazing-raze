@@ -1,7 +1,7 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
-import "./NavbarComponent.css";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import "./NavbarComponent.css";
 
 function NavbarComponent() {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -26,7 +26,7 @@ function NavbarComponent() {
       >
         <Container>
           <Navbar.Brand className="brand" onClick={() => navigateTo("")}>
-            &#127866; Bday Challenge
+            🇦🇹 Amazing Race
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Player } from "../../utils/TableUtils";
 import { getPlayers } from "../../utils/FirebaseHelper";
+import { Player } from "../../utils/TableUtils";
 import CardComponent from "../CardComponent/CardComponent";
 import "./PlayersComponent.css";
 
@@ -11,7 +11,7 @@ function PlayersComponent() {
   }, []);
   return (
     <>
-      <h1>&#127866; Spillere &#127866; </h1>
+      <h1>🇦🇹 Spillere 🇦🇹 </h1>
       <div className="cardsWrapper">
         {players &&
           players.map((item, i) => (
