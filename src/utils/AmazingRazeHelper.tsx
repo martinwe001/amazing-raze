@@ -1,4 +1,4 @@
-import { get, ref } from "firebase/database";
+import { get, ref, set } from "firebase/database";
 import { db } from "../firebaseConfig";
 
 export interface Challenge {
@@ -32,4 +32,17 @@ export const getChallenges = async (): Promise<Challenge[]> => {
   const dataRef = ref(db, `challenges`);
   const firebaseData = await get(dataRef);
   return firebaseData.val();
+};
+export const setCompletedChallenge = async (
+  teamId: string,
+  challengeId: string
+): Promise<boolean> => {
+  const team = await getTeamById(teamId);
+  if (!team.completedChallenges.includes(challengeId)) {
+    team.completedChallenges = [...team.completedChallenges, challengeId];
+    const teamRef = ref(db, `teams/${teamId}`);
+    await set(teamRef, team);
+    return true;
+  }
+  return false;
 };
