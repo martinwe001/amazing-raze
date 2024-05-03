@@ -35,10 +35,11 @@ export const getChallenges = async (): Promise<Challenge[]> => {
 };
 export const setCompletedChallenge = async (
   teamId: string,
-  challengeId: string
+  challengeId: string,
+  canBeMultiple: boolean
 ): Promise<boolean> => {
   const team = await getTeamById(teamId);
-  if (!team.completedChallenges.includes(challengeId)) {
+  if (!team.completedChallenges.includes(challengeId) || canBeMultiple) {
     team.completedChallenges = [...team.completedChallenges, challengeId];
     const teamRef = ref(db, `teams/${teamId}`);
     await set(teamRef, team);

@@ -15,6 +15,7 @@ function AdminFormComponent() {
 
   async function handleCodeSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    console.log("hfeuiwo");
 
     if (!codes.split(",").includes(code)) {
       setErrorMessage("Feil lagnavn!");
@@ -26,16 +27,23 @@ function AdminFormComponent() {
     const c = challenges.find((c) => c.id === challengeId);
     if (c === undefined) {
       setErrorMessage("Challenge id finnes ikke!");
+      setShowErrorMessage(true);
+      return;
     } else {
       const didUpdateTeamChallenge = await setCompletedChallenge(
         code,
-        challengeId
+        challengeId,
+        c.isMultipleTries
       );
       if (!didUpdateTeamChallenge) {
         setErrorMessage("Laget hadde allerede gjennomført denne challengen");
         setShowErrorMessage(true);
+        return;
       }
     }
+    setCode("");
+    setchallengeId("");
+    setShowErrorMessage(false);
   }
 
   return (
@@ -47,7 +55,7 @@ function AdminFormComponent() {
             type="text"
             value={code}
             required
-            placeholder="Kode"
+            placeholder="Lagnavn"
             onChange={(e) => setCode(e.target.value)}
           />
           <CustomInput
@@ -58,7 +66,7 @@ function AdminFormComponent() {
             onChange={(e) => setchallengeId(e.target.value)}
           />
           {showErrorMessage && <p>{errorMessage}</p>}
-          <CustomButton label="Neste" variant="initial" />
+          <CustomButton label="Send inn" variant="initial" />
         </div>
       </form>
     </>
