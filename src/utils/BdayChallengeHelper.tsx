@@ -1,4 +1,4 @@
-import { Attempt, Player, LeaderboardItem } from "./TableUtils";
+import { Attempt } from "./TableUtils";
 
 export const onlyContainsNumbers = (str: string) => !isNaN(parseFloat(str));
 
@@ -38,22 +38,3 @@ export function getBestAttempt(attempts: Attempt[]): Attempt | undefined {
   );
   return attempts.find((a) => a.time === bestTime);
 }
-
-export const convertPlayersToLeaderboardItems = (
-  players: Player[],
-  sortItems: boolean = true
-) => {
-  let leaderboardItems: LeaderboardItem[] = [];
-  players.forEach((player) => {
-    const bestAttempt = getBestAttempt(player.attempts)!;
-    leaderboardItems.push({
-      birthday: player.birthday,
-      bestTime: bestAttempt.time,
-      id: player.id,
-      name: player.name,
-    });
-  });
-  if (sortItems)
-    leaderboardItems = leaderboardItems.sort((a, b) => a.bestTime - b.bestTime);
-  return leaderboardItems;
-};
