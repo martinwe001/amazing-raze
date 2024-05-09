@@ -11,7 +11,7 @@ function PlayersComponent() {
   }, []);
   return (
     <>
-      <h1>🇿🇦 Spillere 🇿🇦 </h1>
+      <h1>🇦🇹 Spillere 🇦🇹 </h1>
       <div className="cardsWrapper">
         {players &&
           players.map((item, i) => (

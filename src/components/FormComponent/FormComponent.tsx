@@ -51,7 +51,7 @@ function FormComponent() {
     <div className="formWrapper">
       {formState === 1 && (
         <>
-          <h1 className="formHeader">🇿🇦 Skriv inn kode 🇿🇦</h1>
+          <h1 className="formHeader">🇦🇹 Skriv inn kode 🇦🇹</h1>
           <p className="infoText">{firstVerse}</p>
           <p className="infoText">{secondVerse}</p>
           <p className="infoText">{thirdVerse}</p>
